@@ -1,0 +1,25 @@
+{
+    "name": "tsvetkov/yii2_telegram_bot",
+    "type": "yii2-extension",
+    "authors": [
+        {
+            "name": "Alexander Tsvetkov",
+            "email": "ac@goldcarrot.ru"
+        }
+    ],
+    "require": {
+        "ext-curl": "*",
+        "php": ">=5.6.0",
+        "yiisoft/yii2": "~2.0.5",
+        "yiisoft/yii2-httpclient": "^2.0"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "tsvetkov\\telegram_bot\\": "src" }
+    },
+}
