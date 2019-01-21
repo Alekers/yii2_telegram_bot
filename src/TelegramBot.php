@@ -150,6 +150,39 @@ class TelegramBot
     }
 
     /**
+     * Official docs: https://core.telegram.org/bots/api#senddocument
+     * Max size document is 50 MB
+     * @param integer|string $chat_id
+     * @param string $document Path to file
+     * @param string $thumb Path to file
+     * @param null $caption
+     * @param string $parse_mode
+     * @param bool $disable_notification
+     * @param integer $reply_to_message_id
+     * @param $reply_markup
+     * @return bool
+     */
+    public function sendDocument($chat_id, $document, $thumb = null, $caption = null, $parse_mode = null, $disable_notification = null, $reply_to_message_id = null, $reply_markup = null)
+    {
+        if (!in_array(strtolower($parse_mode), ['markdown', 'html', null])) {
+            throw new \InvalidArgumentException('Invalid parse_mode argument');
+        }
+        $data = [
+            'chat_id' => $chat_id,
+            'caption' => $caption,
+            'parse_mode' => $parse_mode,
+            'disable_notification' => $disable_notification,
+            'reply_to_message_id' => $reply_to_message_id,
+            'reply_markup' => $reply_markup,
+        ];
+        $files['document'] = $document;
+        if (!is_null($thumb)) {
+            $files['thumb'] = $thumb;
+        }
+        return $this->makeRequest($this->baseUrl . '/sendDocument', $data, $files);
+    }
+
+    /**
      * @param $url
      * @param null $certificate
      * @param int $max_connections
