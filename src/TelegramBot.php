@@ -16,13 +16,13 @@ use yii\httpclient\CurlTransport;
 class TelegramBot
 {
     /** @var string */
-    private $token;
+    protected $token;
 
     /** @var string */
-    private $baseUrl;
+    protected $baseUrl;
 
     /** @var array */
-    private $requestOptions;
+    protected $requestOptions;
 
     /**
      * TelegramBot constructor.
@@ -52,7 +52,7 @@ class TelegramBot
      * @param bool $returnContent
      * @return bool|string
      */
-    private function makeRequest($url, $data = null, $files = null, $returnContent = false)
+    protected function makeRequest($url, $data = null, $files = null, $returnContent = false)
     {
         try {
             $client = new Client();
